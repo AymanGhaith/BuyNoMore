@@ -31,6 +31,34 @@ class Home extends React.Component {
 			    <a href="/search">Search</a>
 			    <a href="/addItems">Add Items</a>
 			  </div>
+
+
+			   <div class="container">
+			    <div class="row">
+
+                  {
+                  	this.state.galleryItems.map( (item) => {
+                    return (
+                      <div class='col-lg-3 col-md-4 col-sm-6'>
+				        <a href="#"><img src= {item.src} className="img-responsive img-thumbnail"/></a>
+				        <br/>
+				      </div>,
+				      
+				      <div>
+				        <p>{item.OwnerName}</p>
+				        <br/>
+				        <a href="#">{item.title}</a>
+				        <br/>
+				        <a href="#">{item.price}</a>
+				        <br/>
+				      </div>
+                    )
+                })
+                  }
+			    </div>
+			  </div>
+
+			  <p>hELLO ZOOOOOZ!! </p>
 			</div>
 			);
 	}

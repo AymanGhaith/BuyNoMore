@@ -14,7 +14,7 @@ class Home extends React.Component {
 	constructor(props){
 		super(props);
 		this.state = {
-			galleryItems: ['ather' , 'qays' , 'mais']
+			galleryItems: []
 		}
 		// this.handleClickRegister = this.handleClickRegister.bind(this);
 		// this.handleClickSignIn = this.handleClickSignIn.bind(this);
@@ -57,6 +57,7 @@ class Home extends React.Component {
 			    <div3 class="row">
 
                   {
+<<<<<<< HEAD
                   		// this.state.galleryItems.map( (item) => {
           //           return (
           //             <div4 class='col-lg-3 col-md-4 col-sm-6'>
@@ -75,6 +76,25 @@ class Home extends React.Component {
 
           //           )
                 // })
+=======
+                  	this.state.galleryItems.map( (item) => {
+                    return (
+                      <div4 class='col-lg-3 col-md-4 col-sm-6'>
+				        <a href="#"><img src= {item.src} className="img-responsive img-thumbnail"/></a>
+				        <br/>
+				      </div4>,
+				      
+				      <div5>
+				        <p>{item.OwnerName}</p>
+				        <br/>
+				        <a href="#">{item.title}</a>
+				        <br/>
+				        <a href="#">{item.price}</a>
+				        <br/>
+				      </div5>
+                    )
+                })
+>>>>>>> 709fabdb10d49927125dfc0d2ca65eac079d7a05
                   }
 			    </div3>
 			  </div2>
