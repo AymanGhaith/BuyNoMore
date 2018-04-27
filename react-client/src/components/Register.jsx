@@ -39,7 +39,6 @@ class Register extends React.Component {
 
 			success: (data) => {
 				console.log("Success in register POST!", data);
-				alert(1);
 				window.location.href = "http://localhost:3000/login";
 
 			},

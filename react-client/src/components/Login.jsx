@@ -17,11 +17,12 @@ class Login extends React.Component {
 			password: ''
 		}
 		this.handleClickLogin = this.handleClickLogin.bind(this);
-		this.handleChangeName = this.handleChangeName.bind(this);
+		this.handleChangeEmail = this.handleChangeEmail.bind(this);
 		this.handleChangePass = this.handleChangePass.bind(this);
 	}
 
 	handleClickLogin(){
+		console.log(this.state);
 		$.ajax({
 			type:'POST',
 			url:'/login',
@@ -35,12 +36,12 @@ class Login extends React.Component {
 			},
 			error: (req, status, err) => {
 				console.log("Error in register POST!");
-				$("#errorLogin").show();
+				//$("#errorLogin").show();
 			}
 		})
 	}
 
-	handleChangeName (evt) {
+	handleChangeEmail (evt) {
 		this.setState({ email: evt.target.value });
 	}
 
@@ -56,7 +57,7 @@ class Login extends React.Component {
 			<br/>
 			<label>Email Address:</label>
 			<br/>
-			<input type="text" name="Email Address" onChange={this.handleChangeName}/>
+			<input type="text" name="Email Address" onChange={this.handleChangeEmail}/>
 			<br/>
 			<label>Password:</label>
 			<br/>
