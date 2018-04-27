@@ -13,6 +13,7 @@ db.once('open', function() {
  var users = new Schema({
 
  	
+
  	fullName: {
  		type: String,
  		unique: true,
