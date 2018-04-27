@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 var db = mongoose.connection;
-mongoose.connect('mongodb://localhost/SocialNight');
+mongoose.connect('mongodb://localhost/BuyNoMore');
 
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
@@ -13,15 +13,10 @@ db.once('open', function() {
  var users = new Schema({
 
  	
- 	firstName: {
+ 	username: {
  		type: String,
  		unique: true,
- 		required: true,
- 	},
- 	lastName: {
- 		type: String,
- 		unique: true,
- 		required: true,
+ 		required: true
  	},
  	email: {
  		type: String,
@@ -31,7 +26,8 @@ db.once('open', function() {
  		toLowerCase: true
  	},
  	password: {
-  		type: String
+  		type: String,
+  		required: true
  	},
  	passwordCnf: {
   		type: String
@@ -87,6 +83,6 @@ db.once('open', function() {
 	var Items = mongoose.model('Items', items);
 	module.exports.Items = Items;
 	var Users = mongoose.model('Users', users);
-	module.exports = Users;
+	module.exports.Users = Users;
 
 
