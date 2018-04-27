@@ -14,11 +14,11 @@ var app = express()
 
 //console.log(__dirname + '/../react-client/dist')
 
-app.get('*', (req, res) => {                       
-  res.sendFile(path.resolve(path.join(__dirname, '/react-client/dist/index.html')));                               
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(path.join(__dirname, '/react-client/dist/index.html')));
 });
 
-//this is  work 
+//this is  work
 var saltRounds = 10;
 /////////////////////////////////////////////////////////////
 
@@ -34,12 +34,12 @@ console.log("here here here ", __dirname)
 mongoose.Promise = global.Promise;
 /////////////////////////////////////////////////////////////
 
-// session :: 
-	// authinticate transzction between Server and client ..  
+// session ::
+	// authinticate transzction between Server and client ..
 	app.use(session({
-		secret: 'any string of text', 
-	 resave: false, //even if nothing changed in the files ,, gana save it again .. 
-	 saveUninitialized: false // for the database 
+		secret: 'any string of text',
+	 resave: false, //even if nothing changed in the files ,, gana save it again ..
+	 saveUninitialized: false // for the database
 	}));
 /////////////////////////////////////////////////////////////
 
@@ -76,12 +76,12 @@ app.post('/login', function(req,res){
         bcrypt.compare(password, data.password, function(err, found){
           if(found) {
             helper.createSession(req, res, data.username);
-            
+
           }
           else {
             console.log('session error');
             res.sendStatus(404);
-            
+
           }
         })
       }
@@ -96,13 +96,13 @@ app.post('/register', function(req,res){
   var password = req.body.password;
   var email = req.body.email;
   var confirmPass = req.body.confirmPass;
-  db.Users.find({ fullName: fullName }, function(err, data){ 
+  db.Users.find({ fullName: fullName }, function(err, data){
     console.log('ashoof el data', data)
     if(err){
-     res.sendStatus(404)
+     res.sendStatus(402)
    }else{
      if(data.length > 0){
-      res.sendStatus(404)
+      res.sendStatus(403)
     }
     else{
       bcrypt.genSalt(saltRounds, function(err, salt) {
@@ -125,19 +125,21 @@ app.post('/register', function(req,res){
        if(err){
         console.log(err)
         console.log("khalas men shan allah!")
-        res.sendStatus(404)
+        res.sendStatus(405)
       }
       else{
-        helper.createSession(req, res, data.fullName);
+        console.log("+++++++")
+        res.sendStatus(200)
+        //helper.createSession(req, res, data.fullName);
         //res.sendStatus(200);
       }
-    })	
+    })
     });
     });
     }
-  }	
+  }
 
-}) 
+})
 });
 
 //////////////////////////////////////////////////////////////////
@@ -169,7 +171,7 @@ app.get('/logout', function(req, res) {
     //     var password = req.body.password;
     //     var email = req.body.email;
     //   //var passwordCnf = passwordCnf;
-    //   db.Users.find({ username: username }, function(err, data){ 
+    //   db.Users.find({ username: username }, function(err, data){
     //     console.log('data shoul be seen', data)
     //     if(err){
     //      res.sendStatus(404)
@@ -207,17 +209,18 @@ app.get('/logout', function(req, res) {
     //       // else{
     //       //   res.sendStatus(404);
     //       // }
-    //     })	
+    //     })
     //     });
     //     });
     //     }
-    //   }	
+    //   }
 
-    // }) 
+    // })
     // });
 
       //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-      
+
+      // app.get('/login', function (req, res) {
 
       // app.get('/login', function (req, res) {
 
@@ -233,14 +236,15 @@ app.get('/logout', function(req, res) {
       // })
 
       //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+//blabla
 
       //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-      // Now using promises :: 
+      // Now using promises ::
       //in the obj. of find we will defide whatever we need to call ..
         // here we will ::
       //when find 'for instance' finish ,, then i promise to excute the function inside (then) ..
 
+<<<<<<< HEAD
      
       //before starting the Search fun. ,, we need to merge the items and add items .. 
      
@@ -274,6 +278,29 @@ app.get('/logout', function(req, res) {
 
 
 ////////////////////////
+=======
+      sellectAll: (req, res) => {
+        User.find ({},(err, users) =>{
+          if (err){
+            console.log(err)
+          }
+          else{
+            res.status(200).json(users);
+          }
+        });
+      }
+
+      //before starting the Search fun. ,, we need to merge the items and add items ..
+      Search: (req, res) =>{
+        Items.find({},(err, items)=> {
+          if (err){
+            console.log(err)
+          }
+          else{
+            res.status(200).json(items);
+          }
+        });
+>>>>>>> 2db7b5ce12645b10e9db5abf18fd2c8860a9983e
 
       app.post("/addItems",(req, res) => {
         // creat a new item 
@@ -305,7 +332,7 @@ app.get('/logout', function(req, res) {
 
       // the value we get from the customer ,, to be stored in the req. obj.
 
-      // for tetsting : console.log 
+      // for tetsting : console.log
 
         //promises::
 
@@ -314,13 +341,25 @@ app.get('/logout', function(req, res) {
       //   const {userId} = req.params;
       //   User.findbyId({userID})
       //   .then (userId => res.status(200).json(UserId))
-      //   console.log('user',user); 
+      //   console.log('user',user);
       // },
 
       // 
       //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
       
 
+<<<<<<< HEAD
+        // creat a new item
+        const newItem = new Item (req.body);
+        console.log('newItem', newItem);
+        newItem.save((err, data)=>{
+          if(err){
+            res.sendStatus(404)
+          }
+          res.sendStatus(201)(item)
+        })
+      };
+=======
       app.post("/addItems",(req, res) => {
         // creat a new item 
         var nickname = req.body.nickname;
@@ -348,6 +387,7 @@ app.get('/logout', function(req, res) {
       });
       });
 
+>>>>>>> 74420c893d31d4b63b0532e1af2eae1dd8830c00
       /////////////////////////////////////////////////////////////////
       //Catch 404 Errors and forward them to error handler ::
       app.use(function(req, res, next){
@@ -368,16 +408,16 @@ app.get('/logout', function(req, res) {
        var status = err.status;
        status = err.status || 500;
 
-      	//Respond to client 
+      	//Respond to client
 
       	res.status(status).json({
       		error : {
       			message: error.message
       		}
       	});
-      	// Respond for testing 
+      	// Respond for testing
 
-      	console.log(err);	
+      	console.log(err);
       });
 
       /////////////////////////////////////////////////////////////
@@ -387,6 +427,3 @@ app.get('/logout', function(req, res) {
 
 
       //_____________________ DONE :D ____________________//
-
-
-
