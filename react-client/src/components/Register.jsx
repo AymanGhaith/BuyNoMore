@@ -29,20 +29,11 @@ class Register extends React.Component {
 				confirmPass: this.state.confirmPass
 			},
 			success: (data) => {
-				alert(1)
 				console.log("Success in register POST!", data);
 				window.location.href = "http://localhost:3000/login";
 
 			},
-			error: (err, err2, err3) => {
-				alert(err)
-				console.log(err)
-				console.log(err2)
-				console.log(err3)
-				console.log(err.status)
-				console.log(err.responseText, 'cdscdc')
-				alert(err)
-
+			error: (err) => {
 				console.log("Error in register POST!", err);
 			}
 		})

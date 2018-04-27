@@ -19,7 +19,7 @@ class Login extends React.Component {
 	}
 
 	handleClickLogin(){
-		console.log(this.state);
+		// console.log(this.state);
 		$.ajax({
 			type:'POST',
 			url:'/login',
@@ -28,11 +28,11 @@ class Login extends React.Component {
 				password: this.state.password
 			},
 			success: (data) => {
-				console.log("Success in register POST!", data);
-				window.location.href = '/home';
+				console.log("Success in login POST!", data);
+				window.location.href = '/session';
 			},
 			error: (req, status, err) => {
-				console.log("Error in register POST!");
+				console.log("Error in login POST!");
 				//$("#errorLogin").show();
 			}
 		})

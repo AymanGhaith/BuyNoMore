@@ -9,8 +9,9 @@ import $ from 'jquery';
 import Home from './Home.jsx';
 import Login from './Login.jsx';
 import Register from './Register.jsx';
-import Lend from './addItems.jsx';
+import Lend from './AddItems.jsx';
 import Search from './Search.jsx';
+import Session from './Session.jsx'
 
 
 // npm install --save react-router
@@ -32,6 +33,7 @@ const AppRoute = () => (
          <Route exact path="/register" component={Register} />
          <Route exact path="/search" component={Search} />
          <Route exact path="/addItems" component={Lend} />
+         <Route exact path="/session" component={Session} />
          </Switch>
       </BrowserRouter>
 		

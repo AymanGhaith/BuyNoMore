@@ -57,8 +57,6 @@ class Home extends React.Component {
                   }
 			    </div>
 			  </div>
-
-			  <p>hELLO ZOOOOOZ!! </p>
 			</div>
 			);
 	}
