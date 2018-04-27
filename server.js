@@ -6,15 +6,16 @@ var mongoose = require('mongoose');
 var session = require('express-session')
 var cookieParser = require('cookie-parser')
 var bcrypt = require('bcrypt');
-var util = require('./helper/utility')
+var helper = require('./helper/utility')
 var app = express()
 
  //react connect
- app.use(express.static(__dirname + '/../react-client/dist'));
+ app.use(express.static(__dirname + '/react-client/dist'));
 
+//console.log(__dirname + '/../react-client/dist')
 
 app.get('*', (req, res) => {                       
-  res.sendFile(path.resolve(path.join(__dirname, '/../react-client/dist/index.html')));                               
+  res.sendFile(path.resolve(path.join(__dirname, '/react-client/dist/index.html')));                               
 });
 
 //this is  work 
@@ -37,21 +38,21 @@ mongoose.Promise = global.Promise;
 	// authinticate transzction between Server and client ..  
 	app.use(session({
 		secret: 'any string of text', 
-	 resave: true, //even if nothing changed in the files ,, gana save it again .. 
+	 resave: false, //even if nothing changed in the files ,, gana save it again .. 
 	 saveUninitialized: false // for the database 
 	}));
 /////////////////////////////////////////////////////////////
 
 app.use(cookieParser())
 app.set('view engine', 'html');
-app.set('views',path.join(__dirname,'client'))
+app.set('views',path.join(__dirname,'react-client'))
 app.engine('html', require('ejs').renderFile);
 ///////////////////////////////////////////////////////////
 
 app.post('/login', function(req,res){
- var username = req.body.username;
+ var fullName = req.body.fullName;
  var password = req.body.password;
- db.Users.findOne({username:username}, function(err, data){
+ db.Users.findOne({fullName:fullName}, function(err, data){
   console.log("here's the data", data)
   if(err){
     console.log('login error');
@@ -64,7 +65,7 @@ app.post('/login', function(req,res){
    else {
     bcrypt.compare(password, data.password, function(err, found){
       if(found) {
-        helper.createSession(req, res, data.username);
+        helper.createSession(req, res, data.fullName);
         
       }
       else {
@@ -80,11 +81,12 @@ app.post('/login', function(req,res){
  
 })
 ///////////////////////////////////////////////////////////
-app.post('/signup', function(req,res){
-	var username = req.body.username;
+app.post('/register', function(req,res){
+	var fullName = req.body.fullName;
   var password = req.body.password;
   var email = req.body.email;
-  db.Users.find({ username: username }, function(err, data){ 
+  var confirmPass = req.body.confirmPass;
+  db.Users.find({ fullName: fullName }, function(err, data){ 
     console.log('ashoof el data', data)
     if(err){
      res.sendStatus(404)
@@ -96,22 +98,28 @@ app.post('/signup', function(req,res){
       bcrypt.genSalt(saltRounds, function(err, salt) {
        if(err){
         console.log('error',err)
+
       }
       bcrypt.hash(password, salt, function(err, hash) {
        if(err){
         console.log('error in hash password')
+        res.sendStatus(404)
       }
       var user = new db.Users({
-        username:username,
+        fullName:fullName,
         email:email,
-        password:hash
+        password:hash,
+        confirmPass:hash
       })
       user.save(function(err, data){
        if(err){
+        console.log(err)
         console.log("khalas men shan allah!")
+        res.sendStatus(404)
       }
       else{
-        helper.createSession(req, res, data.username);
+        helper.createSession(req, res, data.fullName);
+        //res.sendStatus(200);
       }
     })	
     });
@@ -133,7 +141,7 @@ app.get('/logout', function(req, res) {
 
 app.get('/getUser', function (req, res) {
 
- db.Users.findOne({username:req.session.user}, function(err, data) {
+ db.Users.findOne({fullName:req.session.user}, function(err, data) {
    if (err) {
      console.log(err);
    }
