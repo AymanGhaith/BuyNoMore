@@ -34,8 +34,15 @@ class Register extends React.Component {
 				window.location.href = "http://localhost:3000/login";
 
 			},
-			error: (err) => {
+			error: (err, err2, err3) => {
 				alert(err)
+				console.log(err)
+				console.log(err2)
+				console.log(err3)
+				console.log(err.status)
+				console.log(err.responseText, 'cdscdc')
+				alert(err)
+
 				console.log("Error in register POST!", err);
 			}
 		})
@@ -61,23 +68,23 @@ class Register extends React.Component {
 		return (
 			<div className = 'container'>
 			<form>
-			<h1 className = "form-group">Sign Up</h1>
+			<h1>Sign Up</h1>
 			<br/>
 			<label >First Name</label>
 			<br/>
-			<input className="form-control" id="1" aria-describedby="emailHelp" placeholder="Enter Full Name" type="text" name="Full Name" onChange={this.handleChangeFullName}/>
+			<input onChange={this.handleChangeFullName}/>
 			<br/>
 			<label>Email Address:</label>
 			<br/>
-			<input className="form-control" id="2" aria-describedby="emailHelp" placeholder="Email Address" type="text" name="Email Address" onChange={this.handleChangeEmail}/>
+			<input  onChange={this.handleChangeEmail}/>
 			<br/>
 			<label>Password:</label>
 			<br/>
-			<input className="form-control" id="3" aria-describedby="emailHelp" placeholder="Password" type="password" name="Password" onChange={this.handleChangePass}/>
+			<input  onChange={this.handleChangePass}/>
 			<br/>
 			<label>Confirm Password:</label>
 			<br/>
-			<input className="form-control" id="4" aria-describedby="emailHelp" placeholder="Password" type="password" name="Confirm Password" onChange={this.handleChangeConfirmPass}/>
+			<input onChange={this.handleChangeConfirmPass}/>
 			<br/>
 			<button onClick={this.handleClickRegister}>Sign Up</button>
 			</form>
