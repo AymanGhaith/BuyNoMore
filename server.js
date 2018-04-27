@@ -292,18 +292,35 @@ app.get('/logout', function(req, res) {
         })
       }
       //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-      newUserItem: (req, res, next) => {
+      
 
+      app.post("/addItems",(req, res) => {
         // creat a new item 
-        const newItem = new Item (req.body);
-        console.log('newItem', newItem); 
-        newItem.save((err, data)=>{
-          if(err){
-            res.sendStatus(404)
-          }
-          res.sendStatus(201)(item)
-        })
-      };
+        var nickname = req.body.nickname;
+        var itemName = req.body.itemName;
+        var itemDiscription = req.body.itemDiscription;
+        var address = req.body.address;
+        var phoneNum = req.body.phoneNum;
+
+      var items = new db.Items({
+        nickname:nickname,
+        itemName:itemName,
+        itemDiscription:itemDiscription,
+        address:address,
+        phoneNum:phoneNum
+      })
+      items.save(function(err, data){
+       if(err){
+        console.log(err)
+        console.log("khalas men shan allah!")
+        res.sendStatus(404)
+      }else{
+        res.sendStatus(200)
+      }
+      
+      });
+      });
+
       /////////////////////////////////////////////////////////////////
       //Catch 404 Errors and forward them to error handler ::
       app.use(function(req, res, next){

@@ -40,47 +40,36 @@ db.once('open', function() {
 ////////////////////////////////////////////////////////////////////////
  var Schema = mongoose.Schema;
 	var items = Schema({
-		itemname: {
-			type: String,
-			required: true
-		},
-		owner:{
+		nickname:{
 			type: String,
 			required: true
 			//OR: Schema.fullname !! 
 			//be sure from the function that will connect the 2 db.s
 		},
-		itemdiscription: {
+		itemName: {
+			type: String,
+			required: true
+		},
+		
+		itemDiscription: {
 			type: String,
 
 		},
 	 	//Need functionality frokm the routs !!  
-	 	priceOption: {
-	 		free: {
-	 			type: String
-	 		},
-	 		charge: {
-	 			type: String
-	 		}
-	 	},
+	 	
 	 	address: {
 	 		type: String, 
 	 		required: true
 	 	},
-	 	phoneNumber: {
+	 	phoneNum: {
 	 		type: String,
-	 		required: true
+	 		// required: true
 	 	},
 	 	pictures: [{
 	 		type: String,
-	 		required: true
+	 		// required: true
 	 	}]
 	 	
-
-
-
-
-
 	 });
 ////////////////////////////////////////////////////////////////////////
 	var Items = mongoose.model('Items', items);
