@@ -30,6 +30,8 @@ class Home extends React.Component {
 			    <a href="/login" >Sign In</a>
 			    <a href="/search">Search</a>
 			    <a href="/addItems">Add Items</a>
+			    <a href="/search">Search</a>
+			    <br/>
 			  </div>
 
 

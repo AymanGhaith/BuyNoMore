@@ -33,6 +33,7 @@ class Home extends React.Component {
 			    
 			    <a href="/search">Search</a>
 			    <a href="/addItems">Add Items</a>
+			    <a href="/search">Search</a>
 			   <button onClick={this.handleClickLogOut}>Log Out</button>
 
 			  </div>
