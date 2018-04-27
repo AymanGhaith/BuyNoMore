@@ -6,15 +6,16 @@ var mongoose = require('mongoose');
 var session = require('express-session')
 var cookieParser = require('cookie-parser')
 var bcrypt = require('bcrypt');
-var util = require('./helper/utility')
+var helper = require('./helper/utility')
 var app = express()
 
  //react connect
- app.use(express.static(__dirname + '/../react-client/dist'));
+ app.use(express.static(__dirname + '/react-client/dist'));
 
+//console.log(__dirname + '/../react-client/dist')
 
 app.get('*', (req, res) => {                       
-  res.sendFile(path.resolve(path.join(__dirname, '/../react-client/dist/index.html')));                               
+  res.sendFile(path.resolve(path.join(__dirname, '/react-client/dist/index.html')));                               
 });
 
 //this is  work 
@@ -37,21 +38,21 @@ mongoose.Promise = global.Promise;
 	// authinticate transzction between Server and client ..  
 	app.use(session({
 		secret: 'any string of text', 
-	 resave: true, //even if nothing changed in the files ,, gana save it again .. 
+	 resave: false, //even if nothing changed in the files ,, gana save it again .. 
 	 saveUninitialized: false // for the database 
 	}));
 /////////////////////////////////////////////////////////////
 
 app.use(cookieParser())
 app.set('view engine', 'html');
-app.set('views',path.join(__dirname,'client'))
+app.set('views',path.join(__dirname,'react-client'))
 app.engine('html', require('ejs').renderFile);
 ///////////////////////////////////////////////////////////
 
 app.post('/login', function(req,res){
- var username = req.body.username;
+ var fullName = req.body.fullName;
  var password = req.body.password;
- db.Users.findOne({username:username}, function(err, data){
+ db.Users.findOne({fullName:fullName}, function(err, data){
   console.log("here's the data", data)
   if(err){
     console.log('login error');
@@ -64,7 +65,7 @@ app.post('/login', function(req,res){
    else {
     bcrypt.compare(password, data.password, function(err, found){
       if(found) {
-        helper.createSession(req, res, data.username);
+        helper.createSession(req, res, data.fullName);
       }
       else {
         if (data === null) {
@@ -84,17 +85,89 @@ app.post('/login', function(req,res){
           }
         })
       }
+    }
+  })
+  }}
+})
+})
+///////////////////////////////////////////////////////////
+app.post('/register', function(req,res){
+	var fullName = req.body.fullName;
+  var password = req.body.password;
+  var email = req.body.email;
+  var confirmPass = req.body.confirmPass;
+  db.Users.find({ fullName: fullName }, function(err, data){ 
+    console.log('ashoof el data', data)
+    if(err){
+     res.sendStatus(404)
+   }else{
+     if(data.length > 0){
+      res.sendStatus(404)
+    }
+    else{
+      bcrypt.genSalt(saltRounds, function(err, salt) {
+       if(err){
+        console.log('error',err)
 
       }
+      bcrypt.hash(password, salt, function(err, hash) {
+       if(err){
+        console.log('error in hash password')
+        res.sendStatus(404)
+      }
+      var user = new db.Users({
+        fullName:fullName,
+        email:email,
+        password:hash,
+        confirmPass:hash
       })
+      user.save(function(err, data){
+       if(err){
+        console.log(err)
+        console.log("khalas men shan allah!")
+        res.sendStatus(404)
+      }
+      else{
+        helper.createSession(req, res, data.fullName);
+        //res.sendStatus(200);
+      }
+    })	
+    });
+    });
+    }
+  }	
 
-      })
+}) 
+});
+
+//////////////////////////////////////////////////////////////////
+app.get('/logout', function(req, res) {
+  req.session.destroy(function() {
+    res.sendStatus(200);
+  });
+});
+//////////////////////////////////////////////////////////////////
+
+
+app.get('/getUser', function (req, res) {
+
+ db.Users.findOne({fullName:req.session.user}, function(err, data) {
+   if (err) {
+     console.log(err);
+   }
+   else {
+
+     res.send(data)
+   }
+ })
+})
+
       //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
       app.post('/signup', function(req,res){
         console.log(req.body)
-      var username = req.body.username;
-      var password = req.body.password;
-      var email = req.body.email;
+        var username = req.body.username;
+        var password = req.body.password;
+        var email = req.body.email;
       //var passwordCnf = passwordCnf;
       db.Users.find({ username: username }, function(err, data){ 
         console.log('data shoul be seen', data)
@@ -127,7 +200,6 @@ app.post('/login', function(req,res){
           }
           else{
             helper.createSession(req, res, data.username);
-            res.sendStatus(200)
           }
           // if (password!== passwordCnf){
           //   res.sendStatus(200);
@@ -141,29 +213,29 @@ app.post('/login', function(req,res){
         }
       }	
 
-      }) 
-      });
+    }) 
+    });
 
       //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
       app.get('/logout', function(req, res) {
-      req.session.destroy(function() {
-        res.sendStatus(200);
-      });
+        req.session.destroy(function() {
+          res.sendStatus(200);
+        });
       });
       //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
       app.get('/getUser', function (req, res) {
 
-      db.Users.findOne({username:req.session.user}, function(err, data) {
-       if (err) {
-         console.log(err);
-       }
-       else {
+        db.Users.findOne({username:req.session.user}, function(err, data) {
+         if (err) {
+           console.log(err);
+         }
+         else {
 
-         res.send(data)
-       }
-      })
+           res.send(data)
+         }
+       })
       })
 
       //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -229,34 +301,34 @@ app.post('/login', function(req,res){
       newUserItem: (req, res, next) => {
 
         // creat a new item 
-      const newItem = new Item (req.body);
-      console.log('newItem', newItem); 
-         newItem.save((err, data)=>{
-        if(err){
-          res.sendStatus(404)
-        }
-        res.sendStatus(201)(item)
-      })
+        const newItem = new Item (req.body);
+        console.log('newItem', newItem); 
+        newItem.save((err, data)=>{
+          if(err){
+            res.sendStatus(404)
+          }
+          res.sendStatus(201)(item)
+        })
       };
       /////////////////////////////////////////////////////////////////
       //Catch 404 Errors and forward them to error handler ::
       app.use(function(req, res, next){
-      var err = new Error ('Error !! ');
-      err.status = 404;
-      next(err);
+        var err = new Error ('Error !! ');
+        err.status = 404;
+        next(err);
 
       });
       ///////////////////////////////////////////////////////////
       //Error handler function ::
       app.use(function(err, req, res, next){
-      var error = app.get('env');
-      if (error === 'development'){
-       return error
-      }
-      return {}
+        var error = app.get('env');
+        if (error === 'development'){
+         return error
+       }
+       return {}
 
-      var status = err.status;
-      status = err.status || 500;
+       var status = err.status;
+       status = err.status || 500;
 
       	//Respond to client 
 

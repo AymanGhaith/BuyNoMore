@@ -8,8 +8,6 @@ import { BrowserRouter, Route, Link, IndexRoute, hashHistory, browserHistory , S
 //import '../node_modules/bootstrap/dist/css/bootstrap.css';
 //import '../node_modules/bootstrap/dist/css/bootstrap-theme.css';
 
-
-
 class Login extends React.Component {
 
 	constructor(props){
@@ -62,9 +60,7 @@ class Login extends React.Component {
 			<br/>
 			<label>Password:</label>
 			<br/>
-			<input type="text" name="Password" onChange={this.handleChangePass}/>
-			<br/>
-			<a href="/forgotPassword">Forgot Password</a>
+			<input type="password" name="Password" onChange={this.handleChangePass}/>
 			<br/>
 			<button onClick={this.handleClickLogin}>Sign In</button>
 			</div>
