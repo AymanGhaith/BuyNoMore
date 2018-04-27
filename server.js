@@ -50,7 +50,7 @@ app.engine('html', require('ejs').renderFile);
 ///////////////////////////////////////////////////////////
 
 app.post('/login', function(req,res){
- var fullName = req.body.fullName;
+ var fullName = req.body.email;
  var password = req.body.password;
  db.Users.findOne({fullName:fullName}, function(err, data){
   console.log("here's the data", data)
@@ -149,94 +149,88 @@ app.get('/logout', function(req, res) {
 //////////////////////////////////////////////////////////////////
 
 
-app.get('/getUser', function (req, res) {
+// app.get('/getUser', function (req, res) {
 
- db.Users.findOne({fullName:req.session.user}, function(err, data) {
-   if (err) {
-     console.log(err);
-   }
-   else {
+//  db.Users.findOne({fullName:req.session.user}, function(err, data) {
+//    if (err) {
+//      console.log(err);
+//    }
+//    else {
 
-     res.send(data)
-   }
- })
-})
-
-      //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-      app.post('/signup', function(req,res){
-        console.log(req.body)
-        var username = req.body.username;
-        var password = req.body.password;
-        var email = req.body.email;
-      //var passwordCnf = passwordCnf;
-      db.Users.find({ username: username }, function(err, data){ 
-        console.log('data shoul be seen', data)
-        if(err){
-         res.sendStatus(404)
-       }else{
-         if(data.length > 0){
-          res.sendStatus(404)
-        }
-        else{
-          bcrypt.genSalt(saltRounds, function(err, salt) {
-           if(err){
-            console.log('error',err)
-          }
-          bcrypt.hash(password, salt, function(err, hash) {
-           if(err){
-            console.log('error in hash password')
-          }
-          console.log("zzzzzzzzzzzzzzzzzzz",username);
-          console.log("zzzzzzzzzzzzzzzzzzz",email);
-          var user = new db.Users({
-            username:username,
-            email:email,
-            password:hash
-          })
-          console.log("zzzzzzzzzzzzzzzzzzz",user);
-          user.save(function(err, data){
-           if(err){
-            console.log(err)
-          }
-          else{
-            helper.createSession(req, res, data.username);
-          }
-          // if (password!== passwordCnf){
-          //   res.sendStatus(200);
-          // }
-          // else{
-          //   res.sendStatus(404);
-          // }
-        })	
-        });
-        });
-        }
-      }	
-
-    }) 
-    });
+//      res.send(data)
+//    }
+//  })
+// })
 
       //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-      app.get('/logout', function(req, res) {
-        req.session.destroy(function() {
-          res.sendStatus(200);
-        });
-      });
+    //   app.post('/signup', function(req,res){
+    //     console.log(req.body)
+    //     var username = req.body.username;
+    //     var password = req.body.password;
+    //     var email = req.body.email;
+    //   //var passwordCnf = passwordCnf;
+    //   db.Users.find({ username: username }, function(err, data){ 
+    //     console.log('data shoul be seen', data)
+    //     if(err){
+    //      res.sendStatus(404)
+    //    }else{
+    //      if(data.length > 0){
+    //       res.sendStatus(404)
+    //     }
+    //     else{
+    //       bcrypt.genSalt(saltRounds, function(err, salt) {
+    //        if(err){
+    //         console.log('error',err)
+    //       }
+    //       bcrypt.hash(password, salt, function(err, hash) {
+    //        if(err){
+    //         console.log('error in hash password')
+    //       }
+    //       console.log("zzzzzzzzzzzzzzzzzzz",username);
+    //       console.log("zzzzzzzzzzzzzzzzzzz",email);
+    //       var user = new db.Users({
+    //         username:username,
+    //         email:email,
+    //         password:hash
+    //       })
+    //       console.log("zzzzzzzzzzzzzzzzzzz",user);
+    //       user.save(function(err, data){
+    //        if(err){
+    //         console.log(err)
+    //       }
+    //       else{
+    //         helper.createSession(req, res, data.username);
+    //       }
+    //       // if (password!== passwordCnf){
+    //       //   res.sendStatus(200);
+    //       // }
+    //       // else{
+    //       //   res.sendStatus(404);
+    //       // }
+    //     })	
+    //     });
+    //     });
+    //     }
+    //   }	
+
+    // }) 
+    // });
+
       //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      
 
+      // app.get('/login', function (req, res) {
 
-      app.get('/getUser', function (req, res) {
+      //   db.Users.findOne({username:req.session.user}, function(err, data) {
+      //    if (err) {
+      //      console.log(err);
+      //    }
+      //    else {
 
-        db.Users.findOne({username:req.session.user}, function(err, data) {
-         if (err) {
-           console.log(err);
-         }
-         else {
-
-           res.send(data)
-         }
-       })
-      })
+      //      res.send(data)
+      //    }
+      //  })
+      // })
 
       //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -267,7 +261,7 @@ app.get('/getUser', function (req, res) {
           else{
             res.status(200).json(items);
           }
-        });
+        });   
 
 
       }
