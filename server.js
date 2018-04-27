@@ -236,7 +236,7 @@ app.get('/logout', function(req, res) {
       // })
 
       //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+//blabla
 
       //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
       // Now using promises ::
@@ -244,6 +244,41 @@ app.get('/logout', function(req, res) {
         // here we will ::
       //when find 'for instance' finish ,, then i promise to excute the function inside (then) ..
 
+<<<<<<< HEAD
+     
+      //before starting the Search fun. ,, we need to merge the items and add items .. 
+     
+
+/////////////////////////
+  app.post("/search",function(req,res){
+                var data = req.body
+            console.log(data,data.itemName)
+          db.Items.findOne({itemName : data.itemName},function(err,data){
+              if( err ){
+                    console.log("you have an err")
+                  }
+                    console.log(data.itemName,data)
+                    var arr = []
+                    arr.push(data)
+                    res.send(arr)
+                   })            
+    })  
+        // app.get('/search',function(req,res) {
+        //     var data = req.body
+        //     console.log(data,data.itemName)
+        //     db.Items.findOne({itemName : data.itemName},function(err,data){
+        //           if( err ){
+        //             console.log("you have an err")
+        //           }
+        //           console.log(data.itemName,data)
+        //           res.send(data)
+        //     })
+        // })
+
+
+
+////////////////////////
+=======
       sellectAll: (req, res) => {
         User.find ({},(err, users) =>{
           if (err){
@@ -265,9 +300,35 @@ app.get('/logout', function(req, res) {
             res.status(200).json(items);
           }
         });
+>>>>>>> 2db7b5ce12645b10e9db5abf18fd2c8860a9983e
 
+      app.post("/addItems",(req, res) => {
+        // creat a new item 
+        var nickname = req.body.nickname;
+        var itemName = req.body.itemName;
+        var itemDiscription = req.body.itemDiscription;
+        var address = req.body.address;
+        var phoneNum = req.body.phoneNum;
 
+      var items = new db.Items({
+        nickname:nickname,
+        itemName:itemName,
+        itemDiscription:itemDiscription,
+        address:address,
+        phoneNum:phoneNum
+      })
+      items.save(function(err, data){
+       if(err){
+        console.log(err)
+        console.log("khalas men shan allah!")
+        res.sendStatus(404)
+      }else{
+        res.sendStatus(200)
       }
+      
+      });
+      });
+
 
       // the value we get from the customer ,, to be stored in the req. obj.
 
@@ -283,17 +344,7 @@ app.get('/logout', function(req, res) {
       //   console.log('user',user);
       // },
 
-      getUserItems: (req, res) => {
-        const {userId} = req.params;
-        User.findbyId({userId} , (err, items) => {
-          if (err){
-            console.log(err)
-          }
-          else{
-            res.status(200).json(items)
-          }
-        })
-      }
+      // 
       //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
       
 

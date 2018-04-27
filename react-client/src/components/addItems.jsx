@@ -82,11 +82,7 @@ class AddItems extends React.Component{
 
 
 
-//          <br/>
-// 			<label>Item image:</label>
-// 			<br/>
-// 			<input type="file" onChange={this.imageChangedHandler}/>
-// 			<br/>
+        
 
 	render(){
 
@@ -107,6 +103,10 @@ class AddItems extends React.Component{
 			<br/>
 			<textarea rows="4" cols="50" onChange={this.handleItemDescriptionChange}/>
             <br/>
+			<label>Item image:</label>
+			<br/>
+			<input type="file" onChange={this.imageChangedHandler}/>
+			<br/>
 			<label>Your location:</label>
 			<br/>
 			<input type="text" name="Location" onChange={this.handleLocationChange}/>
