@@ -12,14 +12,13 @@ db.once('open', function() {
  var Schema = mongoose.Schema;
  var users = new Schema({
 
- 	
+
 
  	fullName: {
  		type: String,
- 		unique: true,
  		required: true,
  	},
- 	
+
  	email: {
  		type: String,
  		unique: true,
@@ -35,7 +34,7 @@ db.once('open', function() {
   		type: String,
   		required: true
  	}
- 	 
+
  });
 ////////////////////////////////////////////////////////////////////////
  var Schema = mongoose.Schema;
@@ -47,14 +46,14 @@ db.once('open', function() {
 		owner:{
 			type: String,
 			required: true
-			//OR: Schema.fullname !! 
+			//OR: Schema.fullname !!
 			//be sure from the function that will connect the 2 db.s
 		},
 		itemdiscription: {
 			type: String,
 
 		},
-	 	//Need functionality frokm the routs !!  
+	 	//Need functionality frokm the routs !!
 	 	priceOption: {
 	 		free: {
 	 			type: String
@@ -64,7 +63,7 @@ db.once('open', function() {
 	 		}
 	 	},
 	 	address: {
-	 		type: String, 
+	 		type: String,
 	 		required: true
 	 	},
 	 	phoneNumber: {
@@ -75,7 +74,7 @@ db.once('open', function() {
 	 		type: String,
 	 		required: true
 	 	}]
-	 	
+
 
 
 
@@ -87,5 +86,3 @@ db.once('open', function() {
 	module.exports.Items = Items;
 	var Users = mongoose.model('Users', users);
 	module.exports.Users = Users;
-
-

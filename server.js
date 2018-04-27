@@ -99,10 +99,10 @@ app.post('/register', function(req,res){
   db.Users.find({ fullName: fullName }, function(err, data){
     console.log('ashoof el data', data)
     if(err){
-     res.sendStatus(404)
+     res.sendStatus(402)
    }else{
      if(data.length > 0){
-      res.sendStatus(404)
+      res.sendStatus(403)
     }
     else{
       bcrypt.genSalt(saltRounds, function(err, salt) {
@@ -125,7 +125,7 @@ app.post('/register', function(req,res){
        if(err){
         console.log(err)
         console.log("khalas men shan allah!")
-        res.sendStatus(404)
+        res.sendStatus(405)
       }
       else{
         console.log("+++++++")
