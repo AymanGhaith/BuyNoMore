@@ -1,10 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
-//import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-//import AppBar from 'material-ui/AppBar';
-//import RaisedButton from 'material-ui/RaisedButton';
-//import TextField from 'material-ui/TextField';
+
 // import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 // import '../node_modules/bootstrap/dist/css/bootstrap.css';
 // import '../node_modules/bootstrap/dist/css/bootstrap-theme.css';
@@ -28,7 +25,6 @@ class AddItems extends React.Component{
 			checkedPrice: false,
 			itemPrice: ''
 		}
-
 	}
 
 	render(){

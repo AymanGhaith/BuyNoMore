@@ -1,8 +1,6 @@
 
 import React from "react";
 import { BrowserRouter, Route, Link, IndexRoute, hashHistory, browserHistory , Switch  } from "react-router-dom";
-
-
 import $ from 'jquery';
 
 //import { BrowserRouter as Router, Route, Link } from "react-router-dom";
