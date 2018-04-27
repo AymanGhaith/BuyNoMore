@@ -25,7 +25,7 @@ class Home extends React.Component {
 	render(){
 		return (
 			<div>
-			  <div> 
+			  <div>
 			    <a href="/register" >Register</a>
 			    <a href="/login" >Sign In</a>
 			    <a href="/search">Search</a>
@@ -63,4 +63,3 @@ class Home extends React.Component {
 }
 
 export default Home;
-
