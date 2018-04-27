@@ -10,14 +10,14 @@ var util = require('./helper/utility')
 var app = express()
 
  //react connect
- app.use(express.static(__dirname + '/../react-client/dist'));
+ app.use(express.static(__dirname + '/react-client/dist'));
 
 
-app.get('*', (req, res) => {                       
-  res.sendFile(path.resolve(path.join(__dirname, '/../react-client/dist/index.html')));                               
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(path.join(__dirname, '/react-client/dist/index.html')));
 });
 
-//this is  work 
+//this is  work
 var saltRounds = 10;
 /////////////////////////////////////////////////////////////
 
@@ -33,12 +33,12 @@ console.log("here here here ", __dirname)
 mongoose.Promise = global.Promise;
 /////////////////////////////////////////////////////////////
 
-// session :: 
-	// authinticate transzction between Server and client ..  
+// session ::
+	// authinticate transzction between Server and client ..
 	app.use(session({
-		secret: 'any string of text', 
-	 resave: true, //even if nothing changed in the files ,, gana save it again .. 
-	 saveUninitialized: false // for the database 
+		secret: 'any string of text',
+	 resave: true, //even if nothing changed in the files ,, gana save it again ..
+	 saveUninitialized: false // for the database
 	}));
 /////////////////////////////////////////////////////////////
 
@@ -65,26 +65,26 @@ app.post('/login', function(req,res){
     bcrypt.compare(password, data.password, function(err, found){
       if(found) {
         helper.createSession(req, res, data.username);
-        
+
       }
       else {
         console.log('session error');
         res.sendStatus(404)
-        
+
       }
     })
   }
 
 }
 })
- 
+
 })
 ///////////////////////////////////////////////////////////
 app.post('/signup', function(req,res){
 	var username = req.body.username;
   var password = req.body.password;
   var email = req.body.email;
-  db.Users.find({ username: username }, function(err, data){ 
+  db.Users.find({ username: username }, function(err, data){
     console.log('ashoof el data', data)
     if(err){
      res.sendStatus(404)
@@ -113,13 +113,13 @@ app.post('/signup', function(req,res){
       else{
         helper.createSession(req, res, data.username);
       }
-    })	
+    })
     });
     });
     }
-  }	
+  }
 
-}) 
+})
 });
 
 //////////////////////////////////////////////////////////////////
@@ -147,7 +147,7 @@ app.get('/getUser', function (req, res) {
 ///////////////////////////////////////////////////////////
 
 
-  // Now using promises :: 
+  // Now using promises ::
   //in the obj. of find we will defide whatever we need to call ..
     // here we will ::
   //when find 'for instance' finish ,, then i promise to excute the function inside (then) ..
@@ -163,7 +163,7 @@ app.get('/getUser', function (req, res) {
     });
   }
 
-  //before starting the Search fun. ,, we need to merge the items and add items .. 
+  //before starting the Search fun. ,, we need to merge the items and add items ..
   Search: (req, res) =>{
     Items.find({},(err, items)=> {
       if (err){
@@ -179,7 +179,7 @@ app.get('/getUser', function (req, res) {
 
   // the value we get from the customer ,, to be stored in the req. obj.
 
-  // for tetsting : console.log 
+  // for tetsting : console.log
 
     //promises::
 
@@ -188,14 +188,14 @@ app.get('/getUser', function (req, res) {
   //   const {userId} = req.params;
   //   User.findbyId({userID})
   //   .then (userId => res.status(200).json(UserId))
-  //   console.log('user',user); 
+  //   console.log('user',user);
   // },
 
   // newUserItem: (req, res, next) => {
 
-  //   // creat a new item 
+  //   // creat a new item
   //   const newItem = new Item (req.body);
-  //   console.log('newItem', newItem); 
+  //   console.log('newItem', newItem);
   //   newItem.save()
   //   .then(item => {
   //     res.status(201).json(item);
@@ -204,11 +204,11 @@ app.get('/getUser', function (req, res) {
   //     next(err);
   //   })
 
-  //   // Get user 
-  //   // Assign user as a item's lender 
-  //   // Save the item 
+  //   // Get user
+  //   // Assign user as a item's lender
+  //   // Save the item
   //   // Add item to the user's leanding array 'items'
-  //   //Save the user 
+  //   //Save the user
 
   // }
 
@@ -235,16 +235,16 @@ app.use(function(err, req, res, next){
  var status = err.status;
  status = err.status || 500;
 
-		//Respond to client 
+		//Respond to client
 
 		res.status(status).json({
 			error : {
 				message: error.message
 			}
 		});
-		// Respond for testing 
+		// Respond for testing
 
-		console.log(err);	
+		console.log(err);
 	});
 
 
