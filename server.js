@@ -394,6 +394,7 @@ app.get('/logout', function(req, res) {
           res.sendStatus(201)(item)
         })
       };
+
       app.post("/addItems",(req, res) => {
         // creat a new item 
         var nickname = req.body.nickname;
