@@ -243,8 +243,6 @@ app.get('/logout', function(req, res) {
       //in the obj. of find we will defide whatever we need to call ..
         // here we will ::
       //when find 'for instance' finish ,, then i promise to excute the function inside (then) ..
-
-<<<<<<< HEAD
      
       //before starting the Search fun. ,, we need to merge the items and add items .. 
      
@@ -278,7 +276,7 @@ app.get('/logout', function(req, res) {
 
 
 ////////////////////////
-=======
+
       sellectAll: (req, res) => {
         User.find ({},(err, users) =>{
           if (err){
@@ -300,7 +298,6 @@ app.get('/logout', function(req, res) {
             res.status(200).json(items);
           }
         });
->>>>>>> 2db7b5ce12645b10e9db5abf18fd2c8860a9983e
 
       app.post("/addItems",(req, res) => {
         // creat a new item 
@@ -347,8 +344,6 @@ app.get('/logout', function(req, res) {
       // 
       //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
       
-
-<<<<<<< HEAD
         // creat a new item
         const newItem = new Item (req.body);
         console.log('newItem', newItem);
@@ -359,7 +354,7 @@ app.get('/logout', function(req, res) {
           res.sendStatus(201)(item)
         })
       };
-=======
+
       app.post("/addItems",(req, res) => {
         // creat a new item 
         var nickname = req.body.nickname;
@@ -387,7 +382,6 @@ app.get('/logout', function(req, res) {
       });
       });
 
->>>>>>> 74420c893d31d4b63b0532e1af2eae1dd8830c00
       /////////////////////////////////////////////////////////////////
       //Catch 404 Errors and forward them to error handler ::
       app.use(function(req, res, next){

@@ -13,19 +13,23 @@ class Home extends React.Component {
 	constructor(props){
 		super(props);
 		this.state = {
-			galleryItems: []
+			galleryItems: [{nickname: "Zolfaa", itemName: "Drill1", phoneNum:"123" }, {nickname: "Mais", itemName: "Drill2", phoneNum:"987"}, {nickname:"Ali", itemName: "Drill3", phoneNum:"9876"}]
 		}
 		// this.handleClickRegister = this.handleClickRegister.bind(this);
 		// this.handleClickSignIn = this.handleClickSignIn.bind(this);
 	}
 
-	componentDidMount() {
-	}
+	// componentDidMount() {
 
-	render(){
-		return (
-			<div>
-			  <div>
+
+render(){ // Render function should render only one component
+
+	return (
+		<div>
+            <h1>Home Page!</h1>
+
+            <div>
+             <div>
 			    <a href="/register" >Register</a>
 			    <a href="/login" >Sign In</a>
 			    <a href="/search">Search</a>
@@ -34,34 +38,35 @@ class Home extends React.Component {
 			    <br/>
 			  </div>
 
+			 <div className="container">
+			  <div className="row">
 
-			   <div class="container">
-			    <div class="row">
+			  {this.state.galleryItems.map(item =>
 
-                  {
-                  	this.state.galleryItems.map( (item) => {
-                    return (
-                      <div class='col-lg-3 col-md-4 col-sm-6'>
-				        <a href="#"><img src= {item.src} className="img-responsive img-thumbnail"/></a>
-				        <br/>
-				      </div>,
-				      
-				      <div>
-				        <p>{item.OwnerName}</p>
-				        <br/>
-				        <a href="#">{item.title}</a>
-				        <br/>
-				        <a href="#">{item.price}</a>
-				        <br/>
-				      </div>
-                    )
-                })
-                  }
-			    </div>
-			  </div>
+       				<div key = {item._id}>
+                   	<div className='col-lg-3 col-md-4 col-sm-6'>
+				    <br/>
+				   	</div>
+				   	<div>
+				    <p>{item.nickname}</p>
+				    <br/>
+				    <p>{item.itemName}</p>
+				    <br/>
+				    <p>{item.phoneNum}</p>
+				    <br/>
+				   	</div>
+				    </div>
+				)}
+
+       			
+			 </div>
 			</div>
-			);
-	}
+
+	      </div>
+	    </div>
+
+	  )
+   }
 }
 
 export default Home;
