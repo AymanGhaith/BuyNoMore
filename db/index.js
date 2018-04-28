@@ -107,7 +107,7 @@ var userSchema = new Schema({
  		type: String,
 	 },
 	items: [{
-		type: Schema.ObjectId,
+		type: Schema.Types.ObjectId,
 		ref: Items
 	}]
 });
@@ -121,11 +121,11 @@ var userSchema = new Schema({
 			type: String,
 		},
 		owner:{
-			type: Schema.ObjectId,
+			type: Schema.Types.ObjectId,
 			ref: 'Users'
 		},
 		borrower:{
-			type: Schema.ObjectId,
+			type: Schema.Types.ObjectId,
 			ref: 'Users'
 		}
 
