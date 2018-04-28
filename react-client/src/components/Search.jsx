@@ -4,7 +4,6 @@ import $ from 'jquery';
 // import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 // import '../node_modules/bootstrap/dist/css/bootstrap.css';
 // import '../node_modules/bootstrap/dist/css/bootstrap-theme.css';
-import { RadioGroup, RadioButton } from 'react-radio-buttons';
 
 
 class Search extends React.Component {
@@ -29,7 +28,7 @@ class Search extends React.Component {
 		var that  = this
 		console.log('input');
 		$.ajax({
-			type:'POST',		
+			type:'POST',
 			url:'/search',
 			data: {
 				itemName : that.state.searchInput
@@ -43,49 +42,52 @@ class Search extends React.Component {
 
 			}
 
-			
+
 		})
 
 	}
-		     //             {this.state.searchOut.map(item => {
+		//{this.state.searchOut.map(item => {
 
 
-    
-               	   // <a href="#"><img src= {item.src} className="img-responsive img-thumbnail"/></a>
 
-	render(){ // Render function should render only one component
+    // <a href="#"><img src= {item.src} className="img-responsive img-thumbnail"/></a>
 
-		return (
-		<div>
-		 {console.log(this.state.searchOut)}
-            <h1>Search</h1>
-			 <div className="container">
-			  <div className="row">
+		render(){ // Render function should render only one component
 
-			   <input type="text" name="SearchItems" placeholder='Please enter the item name' onChange={this.handleSearchInput}/>
-			    <button type="button" className="btn btn-primary" onClick={this.handleClickSearch}>Search</button>
+			return (
+			<div>
+				{console.log(this.state.searchOut)}
 
-       				{this.state.searchOut.map(item =>
+				<div className="container" >
+					<div className="row">
+						<div className = 'col align-self-center'>
+							<input type="text" name="SearchItems" className="form-control" onChange={this.handleSearchInput}/>
+						</div>
+						<div className = 'col-3'>
+							<button type="button" className="btn btn-raised btn-info" onClick={this.handleClickSearch}>Search</button>
+						</div>
+						{this.state.searchOut.map(item =>
 
-       				<div key = {item._id}>
-                   	<div className='col-lg-3 col-md-4 col-sm-6'>
-				    <br/>
-				   	</div>
-				   	<div>
-				    <p>{item.nickname}</p>
-				    <br/>
-				    <p>{item.itemName}</p>
-				    <br/>
-				    <p>{item.phoneNum}</p>
-				    <br/>
-				   	</div>
-				    </div>
-				)}
-			 </div>
-			</div>
-	      </div>)
-   }
-	
-}
+							<div key = {item._id}>
+								<div className='col-lg-3 col-md-4 col-sm-6'>
+									<br/>
+								</div>
+								<div>
+									<p>{item.nickname}</p>
+									<br/>
+									<p>{item.itemName}</p>
+									<br/>
+									<p>{item.phoneNum}</p>
+									<br/>
+								</div>
+							</div>
+							)}
+
+						</div>
+					</div>
+				</div>
+				)
+			}
+	}
 
 export default Search;
