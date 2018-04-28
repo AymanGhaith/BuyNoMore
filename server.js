@@ -12,8 +12,11 @@ var app = express()
  //react connect
  app.use(express.static(__dirname + '/react-client/dist'));
 
+//console.log(__dirname + '/../react-client/dist')
 
-
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(path.join(__dirname, '/react-client/dist/index.html')));
+});
 
 //this is  work
 var saltRounds = 10;
@@ -46,18 +49,18 @@ app.set('views',path.join(__dirname,'react-client'))
 app.engine('html', require('ejs').renderFile);
 ///////////////////////////////////////////////////////////
 app.get('/maps',function(req,res){
+
 });
-app.post('/item',function(req, res){
+app.post('/item/:userId',function(req, res){
   var item = new db.Items;
-  var query = db.Users.findOne({"fullName":req.session.user});
+
+  var query = db.Users.findById(req.params.userId);
   query.exec(function(err,user){
     if(err){
       res.sendStatus(404)
-      return;
     };
     if(!user){
       res.sendStatus(404)
-      return;
     };
     req.body.user = user;
     item.itemName = req.body.itemName;
@@ -84,28 +87,6 @@ app.post('/item',function(req, res){
   })
 });
 
-app.get('/userItems',function(req, res){
-  //var query = db.Users.findById(req.params.userId).populate('items','itemName');
-    var query = db.Users.findById(req.session.user).populate({path: 'items', model: db.Items})
-
-  query.exec(function(err,user){
-    if(err){
-      res.sendStatus(404)
-    };
-    if(!user){
-      res.sendStatus(404)
-    };
-    console.log(JSON.stringify(user))
-    res.json(user);
-  })
-})
-
-// app.get('/userBorrowedItems:/userId'){
-// }
-// app.get('/items/:itemName'){
-// }
-// app.get('/allItems'){
-// }
 app.post('/login', function(req,res){
  var fullName = req.body.email;
  var password = req.body.password;
@@ -473,10 +454,6 @@ app.get('/logout', function(req, res) {
       });
 
       /////////////////////////////////////////////////////////////
-//console.log(__dirname + '/../react-client/dist')
-app.get('*', (req, res) => {
-  res.sendFile(path.resolve(path.join(__dirname, '/react-client/dist/index.html')));
-});
 
       var port = process.env.PORT || 3000;
       app.listen(port, function (){ console.log("I'm listining tho!" + " " + port)})

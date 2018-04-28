@@ -70,7 +70,7 @@ class AddItems extends React.Component{
 				//pictures: this.state.pictures
 			},
 			success: (data) => {
-				console.log("Success in submiting item details!", data);	
+				console.log("Success in submiting item details!", data);
 				$("#successLendItemDetailsUpload").show();
 			},
 			error:  (err) => {
@@ -82,18 +82,16 @@ class AddItems extends React.Component{
 
 
 
-        
+
 
 	render(){
 
 		return (
-			
+
 			<div>
 			<h1>Add Items</h1>
 			<form>
-			<label>Nickname:</label>
-			<br/>
-			<input type="text" name="NickName" onChange={this.handleNickNameChange}/>
+
 			<br/>
 			<label>Item name:</label>
 			<br/>

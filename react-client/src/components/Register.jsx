@@ -4,8 +4,8 @@ import $ from 'jquery';
 import { BrowserRouter, Route, Link, IndexRoute, hashHistory, browserHistory , Switch  } from "react-router-dom";
 import MapContainer from './Gmaps.jsx';
 import Search from './Search.jsx';
-import Login from './Login.jsx'
-import ItemsList from './ItemsList.jsx'
+import Login from './Login.jsx';
+import ItemsList from './ItemsList.jsx';
 
 
 class Register extends React.Component {
@@ -42,7 +42,7 @@ class Register extends React.Component {
 
 			success: (data) => {
 				console.log("Success in register POST!", data);
-				window.location.href = "http://localhost:3000/login";
+				window.location.href = "/register";
 
 			},
 			error: (err) => {
@@ -138,7 +138,7 @@ class Register extends React.Component {
 				<br/>
 				<br/>
 
-				<div className="col-md-9">
+				<div className="col-md-9" >
 
 			<ItemsList/>
 

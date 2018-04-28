@@ -15,32 +15,60 @@ render(){
 
 	return (
 	<div>
-
-
 		<div className="card" style={{width:'90rem'}}>
-<div className="card-body">
-	<h1>Items Available</h1>
-			<div className="container">
-				<div className="row">
-					{this.state.galleryItems.map(item =>
-						<div key = {item._id}>
-							<div className='col-lg-3 col-md-4 col-sm-6'>
-								<br/>
-							</div>
-							<div>
-								<p>{item.nickname}</p>
-								<br/>
-								<p>{item.itemName}</p>
-								<br/>
-								<p>{item.phoneNum}</p>
-								<br/>
-							</div>
-						</div>
-						)}
-					</div>
-					</div>
-					</div>
+			<table class="table table-dark">
+			  <thead>
+			    <tr>
+			      <th scope="col">#</th>
+			      <th scope="col">Name</th>
+			      <th scope="col">Item</th>
+			      <th scope="col">Location</th>
+						<th scope="col">Phone Number</th>
 
+			    </tr>
+					<br/>
+
+			  </thead>
+			  <tbody>
+			    <tr>
+			      <th scope="row">1</th>
+			      <td>Mais</td>
+			      <td>Extra Cement to give</td>
+			      <td>@Abdulla Ben Z. Street</td>
+						<td>0777 *** ****</td>
+
+			    </tr>
+					<br/>
+			    <tr>
+			      <th scope="row">2</th>
+			      <td>Nader</td>
+			      <td>Axe</td>
+			      <td>@Muhammad Dar Ahmad Street</td>
+						<td>079 *** ****</td>
+
+			    </tr>
+					<br/>
+
+			    <tr>
+			      <th scope="row">3</th>
+			      <td>Zoulfa</td>
+			      <td>Drill</td>
+			      <td>@Omar Mattar</td>
+						<td>079 *** ****</td>
+
+			    </tr>
+					<br/>
+
+					<tr>
+			      <th scope="row">4</th>
+			      <td>Ayman</td>
+			      <td>Hammer</td>
+			      <td>@Jandaweel</td>
+						<td>078 *** ****</td>
+
+			    </tr>
+			  </tbody>
+			</table>
 				</div>
 			</div>
 
