@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Link, IndexRoute, hashHistory, browserHistory , S
 import MapContainer from './Gmaps.jsx';
 import Search from './Search.jsx';
 import Login from './Login.jsx'
+import ItemsList from './ItemsList.jsx'
 
 
 class Register extends React.Component {
@@ -111,6 +112,9 @@ class Register extends React.Component {
 			<div className="col-md-9" style={{height:'60rem'}}>
 				<MapContainer/>
 			</div>
+		</div>
+		<div>
+			<ItemsList/>
 		</div>
 	</div>
 	);

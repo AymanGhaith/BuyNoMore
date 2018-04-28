@@ -46,13 +46,8 @@ class Search extends React.Component {
 		})
 
 	}
-		//{this.state.searchOut.map(item => {
 
-
-
-    // <a href="#"><img src= {item.src} className="img-responsive img-thumbnail"/></a>
-
-		render(){ // Render function should render only one component
+		render(){ 
 
 			return (
 			<div>
