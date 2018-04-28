@@ -48,6 +48,44 @@ app.set('view engine', 'html');
 app.set('views',path.join(__dirname,'react-client'))
 app.engine('html', require('ejs').renderFile);
 ///////////////////////////////////////////////////////////
+app.get('/maps',function(req,res){
+
+});
+app.post('/item/:userId',function(req, res){
+  var item = new db.Items;
+
+  var query = db.Users.findById(req.params.userId);
+  query.exec(function(err,user){
+    if(err){
+      res.sendStatus(404)
+    };
+    if(!user){
+      res.sendStatus(404)
+    };
+    req.body.user = user;
+    item.itemName = req.body.itemName;
+    item.itemDiscription = req.body.itemDiscription;
+    item.owner = req.body.user;
+
+    item.save(function(error,item){
+      if(err){
+        res.sendStatus(404)
+      }else{
+        req.body.user.items.push(item);
+        req.body.user.save(function(err,user){
+          if(err){
+            console.log(err)
+            res.sendStatus(404)
+          } else{
+            console.log(user)
+            res.sendStatus(200)
+          }
+        })
+        
+      }
+    })
+  })
+});
 
 app.post('/login', function(req,res){
  var fullName = req.body.email;
@@ -244,7 +282,6 @@ app.get('/logout', function(req, res) {
         // here we will ::
       //when find 'for instance' finish ,, then i promise to excute the function inside (then) ..
 
-<<<<<<< HEAD
      
       //before starting the Search fun. ,, we need to merge the items and add items .. 
      
@@ -278,7 +315,7 @@ app.get('/logout', function(req, res) {
 
 
 ////////////////////////
-=======
+
       sellectAll: (req, res) => {
         User.find ({},(err, users) =>{
           if (err){
@@ -300,7 +337,6 @@ app.get('/logout', function(req, res) {
             res.status(200).json(items);
           }
         });
->>>>>>> 2db7b5ce12645b10e9db5abf18fd2c8860a9983e
 
       app.post("/addItems",(req, res) => {
         // creat a new item 
@@ -348,7 +384,6 @@ app.get('/logout', function(req, res) {
       //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
       
 
-<<<<<<< HEAD
         // creat a new item
         const newItem = new Item (req.body);
         console.log('newItem', newItem);
@@ -359,7 +394,6 @@ app.get('/logout', function(req, res) {
           res.sendStatus(201)(item)
         })
       };
-=======
       app.post("/addItems",(req, res) => {
         // creat a new item 
         var nickname = req.body.nickname;
@@ -387,7 +421,6 @@ app.get('/logout', function(req, res) {
       });
       });
 
->>>>>>> 74420c893d31d4b63b0532e1af2eae1dd8830c00
       /////////////////////////////////////////////////////////////////
       //Catch 404 Errors and forward them to error handler ::
       app.use(function(req, res, next){
