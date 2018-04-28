@@ -15,10 +15,11 @@ render(){
 
 	return (
 	<div>
-		<h1>Home Page!</h1>
 
-		<div>
 
+		<div className="card" style={{width:'90rem'}}>
+<div className="card-body">
+	<h1>Items Available</h1>
 			<div className="container">
 				<div className="row">
 					{this.state.galleryItems.map(item =>
@@ -37,10 +38,12 @@ render(){
 						</div>
 						)}
 					</div>
+					</div>
+					</div>
 
 				</div>
 			</div>
-		</div>
+
 
 	  )
    }

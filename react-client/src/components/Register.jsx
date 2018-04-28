@@ -74,6 +74,7 @@ class Register extends React.Component {
 	render(){
 
 	return (
+
 	<div>
 		<br/>
 		<Search/>
@@ -108,14 +109,43 @@ class Register extends React.Component {
 					<br/>
 					<Login/>
 				</div>
+
+
+
 			</div>
-			<div className="col-md-9" style={{height:'60rem'}}>
+
+			<div className="col-md-9" style={{height:'30rem'}}>
 				<MapContainer/>
-			</div>
-		</div>
-		<div>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+
+				<div className="col-md-9">
+
 			<ItemsList/>
+
 		</div>
+		</div>
+	</div>
+
 	</div>
 	);
 	}

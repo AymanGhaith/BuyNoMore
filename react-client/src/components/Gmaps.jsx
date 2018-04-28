@@ -36,7 +36,7 @@ class MapContainer extends Component {
   render() {
     return (
       <div>
-      <Map onClick={this.onMapClicked} google={this.props.google} zoom={ 18 } initialCenter = {{lng:this.state.lng,lat:this.state.lat}}>
+      <Map onClick={this.onMapClicked} google={this.props.google} zoom={ 15 } initialCenter = {{lng:this.state.lng,lat:this.state.lat}}>
       {this.state.loc.map((loc)=><Marker onClick = {this.onMarkerClick}
       position = {{lng:loc.lng,lat:loc.lat}} disc={loc.dis.name} name = {loc.dis.dis} />)}
       <InfoWindow
