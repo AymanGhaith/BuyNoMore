@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import { BrowserRouter, Route, Link, IndexRoute, hashHistory, browserHistory , Switch  } from "react-router-dom";
 import MapContainer from './Gmaps.jsx';
+import Search from './Search.jsx';
+import Login from './Login.jsx'
 
 
 class Register extends React.Component {
@@ -71,39 +73,50 @@ class Register extends React.Component {
 	render(){
 
 	return (
-	<div className = "container">
-	<div className = 'row'>
-	<div className = "col-8">
-	<div className = 'container'>
-	<div className="card" style={{width:'18rem'}}>
-	<div className="card-body">
-	<h1 className="card-title">Sign Up</h1>
-	<br/>
-	<label>First Name</label>
-	<br/>
-	<input className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Full Name" type="text" name="Full Name" onChange={this.handleChangeFullName}/>
-	<br/>
-	<label>Email Address:</label>
-	<br/>
-	<input className="form-control" id="2" aria-describedby="emailHelp" placeholder="Email Address" type="text" name="Email Address" onChange={this.handleChangeEmail}/>
-	<br/>
-	<label>Password:</label>
-	<br/>
-	<input className="form-control" id="3" aria-describedby="emailHelp" placeholder="Password" type="password" name="Password" onChange={this.handleChangePass}/>
-	<br/>
-	<label>Confirm Password:</label>
-	<br/>
-	<input className="form-control" id="4" aria-describedby="emailHelp" placeholder="Password" type="password" name="Confirm Password" onChange={this.handleChangeConfirmPass}/>
-	<br/>
-	<button className="btn btn-outline-primary" onClick={this.handleClickRegister}>Sign Up</button>
-	</div>
-	</div>
-	</div>
-	</div>
-	<div className = "col-4">
-	<MapContainer/>
-	</div>
-	</div>
+	<div>
+
+		<br/>
+		<Search/>
+		<br/>
+
+		<div className="row">
+			<div className="col-2">
+				<div className="card" style={{width:'18rem'}}>
+					<div className="card-body">
+						<h1 className="card-title">Sign Up</h1>
+						<br/>
+						<label>Full Name</label>
+						<br/>
+						<input className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Full Name" type="text" name="Full Name" onChange={this.handleChangeFullName}/>
+						<br/>
+						<label>Email Address:</label>
+						<br/>
+						<input className="form-control" id="2" aria-describedby="emailHelp" placeholder="Email Address" type="text" name="Email Address" onChange={this.handleChangeEmail}/>
+						<br/>
+						<label>Password:</label>
+						<br/>
+						<input className="form-control" id="3" aria-describedby="emailHelp" placeholder="Password" type="password" name="Password" onChange={this.handleChangePass}/>
+						<br/>
+						<label>Confirm Password:</label>
+						<br/>
+						<input className="form-control" id="4" aria-describedby="emailHelp" placeholder="Password" type="password" name="Confirm Password" onChange={this.handleChangeConfirmPass}/>
+						<br/>
+						<button className="btn btn-outline-primary" onClick={this.handleClickRegister}>Sign Up</button>
+					</div>
+				</div>
+				<div>
+					<br/>
+					<br/>
+
+					<Login/>
+
+				</div>
+
+			</div>
+			<div className="col-md-9" style={{height:'60rem'}}>
+				<MapContainer/>
+			</div>
+		</div>
 	</div>
 	);
 	}

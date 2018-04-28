@@ -244,10 +244,10 @@ app.get('/logout', function(req, res) {
         // here we will ::
       //when find 'for instance' finish ,, then i promise to excute the function inside (then) ..
 
-<<<<<<< HEAD
-     
-      //before starting the Search fun. ,, we need to merge the items and add items .. 
-     
+
+
+      //before starting the Search fun. ,, we need to merge the items and add items ..
+
 
 /////////////////////////
   app.post("/search",function(req,res){
@@ -261,8 +261,8 @@ app.get('/logout', function(req, res) {
                     var arr = []
                     arr.push(data)
                     res.send(arr)
-                   })            
-    })  
+                   })
+    })
         // app.get('/search',function(req,res) {
         //     var data = req.body
         //     console.log(data,data.itemName)
@@ -278,7 +278,7 @@ app.get('/logout', function(req, res) {
 
 
 ////////////////////////
-=======
+
       sellectAll: (req, res) => {
         User.find ({},(err, users) =>{
           if (err){
@@ -300,10 +300,10 @@ app.get('/logout', function(req, res) {
             res.status(200).json(items);
           }
         });
->>>>>>> 2db7b5ce12645b10e9db5abf18fd2c8860a9983e
+
 
       app.post("/addItems",(req, res) => {
-        // creat a new item 
+        // creat a new item
         var nickname = req.body.nickname;
         var itemName = req.body.itemName;
         var itemDiscription = req.body.itemDiscription;
@@ -325,7 +325,7 @@ app.get('/logout', function(req, res) {
       }else{
         res.sendStatus(200)
       }
-      
+
       });
       });
 
@@ -344,11 +344,11 @@ app.get('/logout', function(req, res) {
       //   console.log('user',user);
       // },
 
-      // 
+      //
       //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-      
 
-<<<<<<< HEAD
+
+
         // creat a new item
         const newItem = new Item (req.body);
         console.log('newItem', newItem);
@@ -359,9 +359,9 @@ app.get('/logout', function(req, res) {
           res.sendStatus(201)(item)
         })
       };
-=======
+
       app.post("/addItems",(req, res) => {
-        // creat a new item 
+        // creat a new item
         var nickname = req.body.nickname;
         var itemName = req.body.itemName;
         var itemDiscription = req.body.itemDiscription;
@@ -383,11 +383,10 @@ app.get('/logout', function(req, res) {
       }else{
         res.sendStatus(200)
       }
-      
+
       });
       });
 
->>>>>>> 74420c893d31d4b63b0532e1af2eae1dd8830c00
       /////////////////////////////////////////////////////////////////
       //Catch 404 Errors and forward them to error handler ::
       app.use(function(req, res, next){
