@@ -45,6 +45,7 @@
     "react-browser-router": "^2.1.1",
     "react-dev": "0.0.1",
     "react-dom": "^15.4.2",
+    "react-google-maps": "^9.4.5",
     "react-history": "^0.18.2",
     "react-image-upload": "0.0.1",
     "react-radio-buttons": "^1.2.2",

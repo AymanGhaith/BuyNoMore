@@ -56,8 +56,8 @@ class Search extends React.Component {
 	render(){ // Render function should render only one component
 
 		return (
-					  <div>
-					  {console.log(this.state.searchOut)}
+		<div>
+		 {console.log(this.state.searchOut)}
             <h1>Search</h1>
 			 <div className="container">
 			  <div className="row">
@@ -80,12 +80,12 @@ class Search extends React.Component {
 				    <br/>
 				   	</div>
 				    </div>
-				    	)}
-
+				)}
 			 </div>
 			</div>
 	      </div>)
+   }
+	
 }
-	}
 
 export default Search;
