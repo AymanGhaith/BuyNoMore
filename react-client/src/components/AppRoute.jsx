@@ -11,7 +11,9 @@ import Login from './Login.jsx';
 import Register from './Register.jsx';
 import Lend from './AddItems.jsx';
 import Search from './Search.jsx';
-import Session from './Session.jsx'
+import Session from './Session.jsx';
+import Profile from './profile.jsx';
+
 
 
 // npm install --save react-router
@@ -34,6 +36,8 @@ const AppRoute = () => (
          <Route exact path="/search" component={Search} />
          <Route exact path="/addItems" component={Lend} />
          <Route exact path="/session" component={Session} />
+         <Route exact path="/profile" component={Profile} />
+
          </Switch>
       </BrowserRouter>
 

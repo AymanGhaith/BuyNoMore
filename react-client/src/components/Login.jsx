@@ -57,7 +57,7 @@ class Login extends React.Component {
 						<br/>
 						<label>Email Address:</label>
 						<br/>
-						<input className="form-control"  aria-describedby="emailHelp" placeholder="Enter Full Name" type="text" name="Email Address" onChange={this.handleChangeEmail}/>
+						<input className="form-control"  aria-describedby="emailHelp" placeholder="Email Address" type="text" name="Email Address" onChange={this.handleChangeEmail}/>
 						<br/>
 						<label>Password:</label>
 						<br/>

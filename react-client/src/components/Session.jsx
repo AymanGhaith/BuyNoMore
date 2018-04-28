@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
+import AddItems from './addItems.jsx'
 // import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 // import '../node_modules/bootstrap/dist/css/bootstrap.css';
 // import '../node_modules/bootstrap/dist/css/bootstrap-theme.css';
@@ -14,7 +15,7 @@ class Home extends React.Component {
 		this.state = {
 
 			galleryItemsLend: [{nickname: "Zolfaa", itemName: "Drill1", phoneNum:"123" }, {nickname: "Mais", itemName: "Drill2", phoneNum:"987"}, {nickname:"Ali", itemName: "Drill3", phoneNum:"9876"}],
-		    galleryItemsBorrow: [{nickname: "Zolfaa1", itemName: "Drill11", phoneNum:"1231" }, {nickname: "Mais1", itemName: "Drill21", phoneNum:"9871"}, {nickname:"Ali1", itemName: "Drill31", phoneNum:"98761"}]
+		  galleryItemsBorrow: [{nickname: "Zolfaa1", itemName: "Drill11", phoneNum:"1231" }, {nickname: "Mais1", itemName: "Drill21", phoneNum:"9871"}, {nickname:"Ali1", itemName: "Drill31", phoneNum:"98761"}]
 
 		}
 		// this.handleClickRegister = this.handleClickRegister.bind(this);
@@ -29,71 +30,76 @@ class Home extends React.Component {
 	// componentDidMount() {
 	// }
 
-	render(){
-		return (
-			<div>
+	render (){
+    return(
+<div className="row">
+      <div className="col-md-2">
+        <div className="card" style={{width:'25rem'}}>
+          <div className="card-body">
+      <div className="card hovercard" >
+      <div className="cardheader">
 
-			  <p>Hello Logged In user!</p>
+      </div>
+      <div className="avatar" className='card'>
+      <img alt="" src="https://pbs.twimg.com/profile_images/874276197357596672/kUuht00m_400x400.jpg" style={{width: '22rem'}}></img>
+      </div>
+      <div className="info">
+      <div className="title">
+      <h1>Donald Trump</h1>
+      </div>
+      <p>Passionate Mechanic</p>
+      <p>Curious developer</p>
+      <p>Drill Lover</p>
+      </div>
+      <div>
+      </div>
+      </div>
 
-			  <div> 
-			    <a href="/addItems">Add Items</a>
-			   <button onClick={this.handleClickLogOut}>Log Out</button>
+      <table>
+  <thead>
+    <tr>
+        <th>Name</th>
+        <th>Item Name</th>
+        <th>Item Status</th>
+    </tr>
+  </thead>
 
-			  </div>
+  <tbody>
+    <tr>
+      <td>Alvin</td>
+      <td>Eclair</td>
+      <td>Borrow</td>
+    </tr>
+    <tr>
+      <td>Alan</td>
+      <td>Jellybean</td>
+      <td>Borrow</td>
+    </tr>
+    <tr>
+      <td>Jonathan</td>
+      <td>Lollipop</td>
+      <td>Lend</td>
+    </tr>
 
-			 <div className="container">
-			  <div className="row">
+  </tbody>
+ </table>
+      </div>
 
 
-			   {this.state.galleryItemsLend.map(item =>
+      </div>
+			<div className = 'container'>
+			<div className = 'col-md-6'>
 
-       				<div key = {item._id}>
-                   	<div className='col-lg-3 col-md-4 col-sm-6'>
-				    <br/>
-				   	</div>
-				   	<div>
-				    <p>{item.nickname}</p>
-				    <br/>
-				    <p>{item.itemName}</p>
-				    <br/>
-				    <p>{item.phoneNum}</p>
-				    <br/>
-				   	</div>
-				    </div>
-				)}
-
-			 </div>
+			<AddItems/>
 			</div>
-
-            <div className="container">
-			  <div className="row">
+		</div>
 
 
-			   {this.state.galleryItemsBorrow.map(item =>
+      </div>
+		</div>
 
-       				<div key = {item._id}>
-                   	<div className='col-lg-3 col-md-4 col-sm-6'>
-				    <br/>
-				   	</div>
-				   	<div>
-				    <p>{item.nickname}</p>
-				    <br/>
-				    <p>{item.itemName}</p>
-				    <br/>
-				    <p>{item.phoneNum}</p>
-				    <br/>
-				   	</div>
-				    </div>
-				)}
-
-			 </div>
-			</div>
-
-			  
-	    </div>
-			);
-	}
+  )
+  }
 }
 
 export default Home;
-
