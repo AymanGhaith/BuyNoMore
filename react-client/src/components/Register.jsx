@@ -74,11 +74,9 @@ class Register extends React.Component {
 
 	return (
 	<div>
-
 		<br/>
 		<Search/>
 		<br/>
-
 		<div className="row">
 			<div className="col-2">
 				<div className="card" style={{width:'18rem'}}>
@@ -107,11 +105,8 @@ class Register extends React.Component {
 				<div>
 					<br/>
 					<br/>
-
 					<Login/>
-
 				</div>
-
 			</div>
 			<div className="col-md-9" style={{height:'60rem'}}>
 				<MapContainer/>
