@@ -48,6 +48,44 @@ app.set('view engine', 'html');
 app.set('views',path.join(__dirname,'react-client'))
 app.engine('html', require('ejs').renderFile);
 ///////////////////////////////////////////////////////////
+app.get('/maps',function(req,res){
+
+});
+app.post('/item/:userId',function(req, res){
+  var item = new db.Items;
+
+  var query = db.Users.findById(req.params.userId);
+  query.exec(function(err,user){
+    if(err){
+      res.sendStatus(404)
+    };
+    if(!user){
+      res.sendStatus(404)
+    };
+    req.body.user = user;
+    item.itemName = req.body.itemName;
+    item.itemDiscription = req.body.itemDiscription;
+    item.owner = req.body.user;
+
+    item.save(function(error,item){
+      if(err){
+        res.sendStatus(404)
+      }else{
+        req.body.user.items.push(item);
+        req.body.user.save(function(err,user){
+          if(err){
+            console.log(err)
+            res.sendStatus(404)
+          } else{
+            console.log(user)
+            res.sendStatus(200)
+          }
+        })
+        
+      }
+    })
+  })
+});
 
 app.post('/login', function(req,res){
  var fullName = req.body.email;
@@ -243,6 +281,7 @@ app.get('/logout', function(req, res) {
       //in the obj. of find we will defide whatever we need to call ..
         // here we will ::
       //when find 'for instance' finish ,, then i promise to excute the function inside (then) ..
+
      
       //before starting the Search fun. ,, we need to merge the items and add items .. 
      
@@ -344,6 +383,7 @@ app.get('/logout', function(req, res) {
       // 
       //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
       
+
         // creat a new item
         const newItem = new Item (req.body);
         console.log('newItem', newItem);
