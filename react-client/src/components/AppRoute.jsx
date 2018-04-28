@@ -6,7 +6,7 @@ import $ from 'jquery';
 //import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 // import { withRouter } from 'react-router-dom';
 // import { BrowserHistory } from 'react-history';
-import Home from './Home.jsx';
+import ItemsList from './ItemsList.jsx';
 import Login from './Login.jsx';
 import Register from './Register.jsx';
 import Lend from './AddItems.jsx';
@@ -24,11 +24,11 @@ import Session from './Session.jsx'
 // npm install --save react-browser-router
 
 const AppRoute = () => (
-  
+
       <BrowserRouter history={hashHistory}>
       <Switch>
-         <Route exact path="/" component={Home} />
-         <Route exact path="/home" component={Home} />
+         <Route exact path="/" component={Register} />
+         <Route exact path="/ItemsList" component={ItemsList} />
          <Route exact path="/login" component={Login} />
          <Route exact path="/register" component={Register} />
          <Route exact path="/search" component={Search} />
@@ -36,8 +36,8 @@ const AppRoute = () => (
          <Route exact path="/session" component={Session} />
          </Switch>
       </BrowserRouter>
-		
-			
+
+
 );
 
 export default AppRoute;
