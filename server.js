@@ -84,10 +84,9 @@ app.post('/item',function(req, res){
   })
 });
 
-app.get('/userItems/:userId',function(req, res){
-
+app.get('/userItems',function(req, res){
   //var query = db.Users.findById(req.params.userId).populate('items','itemName');
-    var query = db.Users.findById(req.params.userId).populate('items','itemName');
+    var query = db.Users.findById(req.session.user).populate({path: 'items', model: db.Items})
 
   query.exec(function(err,user){
     if(err){
@@ -96,6 +95,7 @@ app.get('/userItems/:userId',function(req, res){
     if(!user){
       res.sendStatus(404)
     };
+    console.log(JSON.stringify(user))
     res.json(user);
   })
 })
