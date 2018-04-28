@@ -49,19 +49,26 @@ class Login extends React.Component {
 	render(){
 
 		return (
-			<div>
-			<h1>Sign In</h1>
-			<br/>
-			<label>Email Address:</label>
-			<br/>
-			<input type="text" name="Email Address" onChange={this.handleChangeEmail}/>
-			<br/>
-			<label>Password:</label>
-			<br/>
-			<input type="password" name="Password" onChange={this.handleChangePass}/>
-			<br/>
-			<button onClick={this.handleClickLogin}>Sign In</button>
+		<div className="row">
+			<div className="col-4">
+				<div className="card" style={{width:'18rem'}}>
+					<div className="card-body">
+						<h1 className="card-title">Sign In</h1>
+						<br/>
+						<label>Email Address:</label>
+						<br/>
+						<input className="form-control"  aria-describedby="emailHelp" placeholder="Enter Full Name" type="text" name="Email Address" onChange={this.handleChangeEmail}/>
+						<br/>
+						<label>Password:</label>
+						<br/>
+						<input className="form-control"  aria-describedby="emailHelp" placeholder="Enter Password" type="password" name="Password" onChange={this.handleChangePass}/>
+						<br/>
+						<button className="btn btn-outline-primary" onClick={this.handleClickLogin}>Sign In</button>
+					</div>
+				</div>
 			</div>
+		</div>
+
 			);
 	}
 

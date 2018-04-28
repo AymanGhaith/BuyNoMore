@@ -78,7 +78,7 @@ app.post('/item',function(req, res){
             res.sendStatus(200)
           }
         })
-        
+
       }
     })
   })
@@ -301,9 +301,9 @@ app.get('/logout', function(req, res) {
         // here we will ::
       //when find 'for instance' finish ,, then i promise to excute the function inside (then) ..
 
-     
-      //before starting the Search fun. ,, we need to merge the items and add items .. 
-     
+
+      //before starting the Search fun. ,, we need to merge the items and add items ..
+
 
 /////////////////////////
   app.post("/search",function(req,res){
@@ -317,8 +317,8 @@ app.get('/logout', function(req, res) {
                     var arr = []
                     arr.push(data)
                     res.send(arr)
-                   })            
-    })  
+                   })
+    })
         // app.get('/search',function(req,res) {
         //     var data = req.body
         //     console.log(data,data.itemName)
@@ -358,7 +358,7 @@ app.get('/logout', function(req, res) {
         });
 
       app.post("/addItems",(req, res) => {
-        // creat a new item 
+        // creat a new item
         var nickname = req.body.nickname;
         var itemName = req.body.itemName;
         var itemDiscription = req.body.itemDiscription;
@@ -380,7 +380,7 @@ app.get('/logout', function(req, res) {
       }else{
         res.sendStatus(200)
       }
-      
+
       });
       });
 
@@ -399,9 +399,8 @@ app.get('/logout', function(req, res) {
       //   console.log('user',user);
       // },
 
-      // 
+      //
       //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-      
 
         // creat a new item
         const newItem = new Item (req.body);
@@ -415,7 +414,7 @@ app.get('/logout', function(req, res) {
       };
 
       app.post("/addItems",(req, res) => {
-        // creat a new item 
+        // creat a new item
         var nickname = req.body.nickname;
         var itemName = req.body.itemName;
         var itemDiscription = req.body.itemDiscription;
@@ -437,7 +436,7 @@ app.get('/logout', function(req, res) {
       }else{
         res.sendStatus(200)
       }
-      
+
       });
       });
 
